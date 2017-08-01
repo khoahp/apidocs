@@ -73,7 +73,7 @@ public interface NotificationTemplate {
 	        @ApiResponse(code = HttpURLConnection.HTTP_INTERNAL_ERROR, message = "Internal server problems")
 	})
 	public Response updateNotificationTemplates(@Context HttpServletRequest request, @Context Header header,
-			@ApiParam(value = "type that need to be update", required = true) @PathParam("type") String type, @ApiParam NotificationTemplatesInputModel input);
+			@ApiParam(value = "type that need to be updated", required = true) @PathParam("type") String type, @ApiParam NotificationTemplatesInputModel input);
 
 }
 
