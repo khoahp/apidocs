@@ -5,9 +5,7 @@ This is a java project to build a stand-alone server which implements the OpenAP
 more about both the spec and the framework at http://swagger.io.
 
 This sample creates an `application` context through the `applicationContext.xml`, allowing the `JAXRSServerFactoryBean` 
-to reflect over property packages to discover swagger-enabled resources.  
-This was originally contributed by [chadhahn](https://github.com/chadhahn) and adapted 
-by [rvullriede](https://github.com/rvullriede).  Thank you for your contributions!
+to reflect over property packages to discover swagger-enabled resources.
 
 ### To run (with Maven)
 To run the server, run this task:
