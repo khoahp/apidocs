@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://benchresources.in/cdm/Player" xmlns:tns="http://benchresources.in/cdm/Player"
+	elementFormDefault="qualified">
+
+	<!-- LabelModel -->
+	<xsd:element name="LabelShortModel">
+		<xsd:complexType>
+			<xsd:sequence>
+
+				<!-- Other fields -->
+				<xsd:element name="name" type="xsd:string" />
+				<xsd:element name="color" type="xsd:string" />
+				<xsd:element name="scope" type="xsd:string" />
+
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<!-- Object to contain list of Dossier referencing Dossier model -->
+	<xsd:element name="LabelModel">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="labelId" type="xsd:int" />
+				<xsd:element name="createDate" type="xsd:date" />
+				<xsd:element name="modifiedDate" type="xsd:date" />
+				<xsd:element name="name" type="xsd:string" />
+				<xsd:element name="color" type="xsd:string" />
+				<xsd:element name="scope" type="xsd:string" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<!-- Object to contain list of Dossier referencing Dossier model -->
+	<xsd:element name="LabelResults">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="total" type="xsd:int" />
+				<xsd:element ref="tns:LabelModel"
+	minOccurs="0" maxOccurs="unbounded" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="LabelInputModel">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="name" type="xsd:string" />
+				<xsd:element name="color" type="xsd:string" />
+				<xsd:element name="scope" type="xsd:string" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+</xsd:schema>
+
