@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://benchresources.in/cdm/Player" xmlns:tns="http://benchresources.in/cdm/Player"
+	elementFormDefault="qualified">
+
+	<!-- LocationModel -->
+	<xsd:element name="LocationShortModel">
+		<xsd:complexType>
+			<xsd:sequence>
+
+				<!-- Other fields -->
+				<xsd:element name="location" type="xsd:string" />
+				<xsd:element name="geolocation" type="xsd:string" />
+
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<!-- Object to contain list of Dossier referencing Dossier model -->
+	<xsd:element name="LocationModel">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="locationId" type="xsd:int" />
+				<xsd:element name="createDate" type="xsd:date" />
+				<xsd:element name="modifiedDate" type="xsd:date" />
+				<xsd:element name="location" type="xsd:string" />
+				<xsd:element name="geolocation" type="xsd:string" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<!-- Object to contain list of Dossier referencing Dossier model -->
+	<xsd:element name="LocationResults">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="total" type="xsd:int" />
+				<xsd:element ref="tns:LocationModel"
+	minOccurs="0" maxOccurs="unbounded" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="LocationInputModel">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="location" type="xsd:string" />
+				<xsd:element name="geolocation" type="xsd:string" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+</xsd:schema>
+
