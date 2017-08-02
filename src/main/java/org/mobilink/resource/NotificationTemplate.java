@@ -65,7 +65,7 @@ public interface NotificationTemplate {
 	@Path("/{type}")
 	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-	@ApiOperation(value = "Update NotificationTemplate by its code", response = NotificationTemplatesModel.class)
+	@ApiOperation(value = "Update NotificationTemplate by its type", response = NotificationTemplatesModel.class)
 	@ApiResponses(value = {
 	        @ApiResponse(code = HttpURLConnection.HTTP_OK, message = "Returns a certain NotificationTemplatesModel that has been updated", response = NotificationTemplatesModel.class),
 	        @ApiResponse(code = HttpURLConnection.HTTP_UNAUTHORIZED, message = "Unauthorized"),
