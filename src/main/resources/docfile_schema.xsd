@@ -2,9 +2,18 @@
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 	targetNamespace="http://benchresources.in/cdm/Player" xmlns:tns="http://benchresources.in/cdm/Player"
 	elementFormDefault="qualified">
-	
+
 	<!-- TODO: Add model for list -->
-		
+	<xsd:element name="DocFileResults">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="total" type="xsd:int" />
+				<xsd:element ref="tns:DocFileModel" minOccurs="0"
+					maxOccurs="unbounded" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
 	<xsd:element name="DocFileModel">
 		<xsd:complexType>
 			<xsd:sequence>
@@ -20,12 +29,13 @@
 				<xsd:element name="promulgationDate" type="xsd:date" />
 				<xsd:element name="signerInfo" type="xsd:string" />
 				<xsd:element name="documentType" type="xsd:int" />
+				<xsd:element name="typeName" type="xsd:string" />
 				<xsd:element name="subject" type="xsd:string" />
 				<xsd:element name="templateNo" type="xsd:string" />
-				<xsd:element name="register" type="xsd:date" />
+				<xsd:element name="register" type="xsd:long" />
 				<xsd:element name="registerDate" type="xsd:date" />
 				<xsd:element name="seqNum" type="xsd:int" />
-				<xsd:element name="dueDate" type="xsd:date" />
+				<xsd:element name="dueDate" type="xsd:date" />	
 				<xsd:element name="status" type="xsd:string" />
 				<xsd:element name="isTemplate" type="xsd:boolean" />
 				<xsd:element name="isNew" type="xsd:boolean" />
@@ -45,25 +55,38 @@
 				<xsd:element name="userName" type="xsd:string" />
 				<xsd:element name="createDate" type="xsd:date" />
 				<xsd:element name="modifiedDate" type="xsd:date" />
+				<xsd:element name="templateNo" type="xsd:string" />
 				<xsd:element name="issuerCode" type="xsd:string" />
 				<xsd:element name="issuerName" type="xsd:string" />
 				<xsd:element name="codeNo" type="xsd:string" />
 				<xsd:element name="codeNotation" type="xsd:string" />
 				<xsd:element name="promulgationDate" type="xsd:date" />
+				<xsd:element name="promulgationPlace" type="xsd:string" />
 				<xsd:element name="signerInfo" type="xsd:string" />
 				<xsd:element name="documentType" type="xsd:int" />
+				<xsd:element name="typeName" type="xsd:string" />
 				<xsd:element name="subject" type="xsd:string" />
-				<xsd:element name="templateNo" type="xsd:string" />
-				<xsd:element name="register" type="xsd:date" />
+				<xsd:element name="content" type="xsd:string" />
+				<xsd:element name="security" type="xsd:int" />
+				<xsd:element name="priority" type="xsd:int" />
+				<xsd:element name="pageAmount" type="xsd:int" />
+				<xsd:element name="promulgationAmount" type="xsd:int" />
+				<xsd:element name="language" type="xsd:string" />
+				<xsd:element name="visibility" type="xsd:int" />
+				<xsd:element name="archiveCode" type="xsd:string" />
+				<xsd:element name="archiveState" type="xsd:string" />
+				<!-- TODO: add fields are missing -->
+
+				<xsd:element name="register" type="xsd:long" />
 				<xsd:element name="registerDate" type="xsd:date" />
 				<xsd:element name="seqNum" type="xsd:int" />
-				<xsd:element name="dueDate" type="xsd:date" />
+				<xsd:element name="dueDate " type="xsd:date" />
 				<xsd:element name="status" type="xsd:string" />
 				<xsd:element name="isTemplate" type="xsd:boolean" />
-				<xsd:element name="isNew" type="xsd:boolean" />
-				<xsd:element name="overdue" type="xsd:int" />
 				<xsd:element name="permission" type="xsd:string" />
-				<!-- TODO: add fields are missing -->
+				<xsd:element name="approvalDate " type="xsd:date" />
+				<xsd:element name="signerUserId" type="xsd:long" />
+				<xsd:element name="verified" type="xsd:boolean" />
 				<xsd:element ref="tns:LabelModel" minOccurs="0"
 					maxOccurs="unbounded" />
 				<xsd:element ref="tns:LinkModel" minOccurs="0"
@@ -96,6 +119,16 @@
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
+	<!--Label -->
+	<xsd:element name="LabelResults">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="total" type="xsd:int" />
+				<xsd:element ref="tns:LabelModel" minOccurs="0"
+					maxOccurs="unbounded" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
 
 	<xsd:element name="LabelModel">
 		<xsd:complexType>
@@ -106,19 +139,47 @@
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
-	
+
+	<xsd:element name="LabelShortModel">
+		<xsd:complexType>
+			<xsd:sequence>
+
+				<!-- Other fields -->
+				<xsd:element name="labelId" type="xsd:long" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<!--Link -->
+	<xsd:element name="LinkResults">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="total" type="xsd:int" />
+				<xsd:element ref="tns:LinkModel" minOccurs="0"
+					maxOccurs="unbounded" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
 	<xsd:element name="LinkModel">
 		<xsd:complexType>
 			<xsd:sequence>
 				<xsd:element name="docFileId" type="xsd:long" />
 				<xsd:element name="codeNo" type="xsd:string" />
-				<xsd:element name="codeNo" type="xsd:string" />
-				<xsd:element name="codeNotation " type="xsd:string" />
+				<xsd:element name="codeNotation" type="xsd:string" />
+				<xsd:element name="subject" type="xsd:string" />
 				<xsd:element name="typeName" type="xsd:string" />
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
-	
+	<xsd:element name="LinkShortModel">
+		<xsd:complexType>
+			<xsd:sequence>
+
+				<!-- Other fields -->
+				<xsd:element name="docFileId" type="xsd:long" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+<!--Activity -->
 	<xsd:element name="ActivityModel">
 		<xsd:complexType>
 			<xsd:sequence>
@@ -127,7 +188,17 @@
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
-	
+<!--Attach -->
+	<xsd:element name="AttachsResults">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="total" type="xsd:int" />
+				<xsd:element ref="tns:AttachModel" minOccurs="0"
+					maxOccurs="unbounded" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
 	<xsd:element name="AttachModel">
 		<xsd:complexType>
 			<xsd:sequence>
@@ -141,23 +212,54 @@
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
+	<!--Roles -->
+	<xsd:element name="RolesResults">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="total" type="xsd:int" />
+				<xsd:element ref="tns:RolesModel" minOccurs="0"
+					maxOccurs="unbounded" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
 	
-	<xsd:element name="RoleModel">
+	<xsd:element name="RolesModel">
 		<xsd:complexType>
 			<xsd:sequence>
 				<xsd:element name="roleId " type="xsd:long" />
 				<xsd:element name="name" type="xsd:string" />
-				<xsd:element name="readwrite" type="xsd:date" />
-				<xsd:element name="approval" type="xsd:date" />
+				<xsd:element name="readwrite" type="xsd:boolean" />
+				<xsd:element name="approval" type="xsd:boolean" />
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
-
-	<xsd:element name="RoleInputModel">
+	
+	<xsd:element name="RolesShortModel">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element name="readwrite" type="xsd:date" />
-				<xsd:element name="approval" type="xsd:date" />
+				<!-- Other fields -->
+				<xsd:element name="roleId" type="xsd:long" />
+				<xsd:element name="readwrite" type="xsd:boolean" />
+				<xsd:element name="approval" type="xsd:boolean" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="RolesInputModel">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="readwrite" type="xsd:boolean" />
+				<xsd:element name="approval" type="xsd:boolean" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<!--UserDocFile -->
+	<xsd:element name="UserDocFileResults">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="total" type="xsd:int" />
+				<xsd:element ref="tns:UserDocFileModel" minOccurs="0"
+					maxOccurs="unbounded" />
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
@@ -173,6 +275,17 @@
 		</xsd:complexType>
 	</xsd:element>
 	
+	<xsd:element name="UserDocFileShortModel">
+		<xsd:complexType>
+			<xsd:sequence>
+				<!-- Other fields -->
+				<xsd:element name="userId" type="xsd:long" />
+				<xsd:element name="readwrite" type="xsd:boolean" />
+				<xsd:element name="approval" type="xsd:boolean" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
 	<xsd:element name="UserDocFileInputModel">
 		<xsd:complexType>
 			<xsd:sequence>
@@ -181,7 +294,7 @@
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
-	
+	<!--Approval -->
 	<xsd:element name="ApprovalModel">
 		<xsd:complexType>
 			<xsd:sequence>
@@ -191,13 +304,23 @@
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
-	
-	
+
+
 	<xsd:element name="ApprovalShortModel">
 		<xsd:complexType>
 			<xsd:sequence>
 				<xsd:element name="approvalDate" type="xsd:date" />
 				<xsd:element name="eSignature" type="xsd:long" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<!--ChangeLog -->
+	<xsd:element name="ChangeLogResults">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="total" type="xsd:int" />
+				<xsd:element ref="tns:ChangeLogModel" minOccurs="0"
+					maxOccurs="unbounded" />
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
@@ -213,42 +336,5 @@
 		</xsd:complexType>
 	</xsd:element>
 	
-	<!-- Object to contain list of Dossier referencing Dossier model -->
-	<xsd:element name="NotificationTemplatesModel">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element name="notificationType" type="xsd:string" />
-				<xsd:element name="modifiedDate" type="xsd:date" />
-				<xsd:element name="emailSubject" type="xsd:string" />
-				<xsd:element name="emailBody" type="xsd:string" />
-				<xsd:element name="textMessage" type="xsd:string" />
-				<xsd:element name="textSMS" type="xsd:string" />
-
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
-
-	<!-- Object to contain list of Dossier referencing Dossier model -->
-	<xsd:element name="NotificationTemplatesResults">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element name="total" type="xsd:int" />
-				<xsd:element ref="tns:NotificationTemplatesModel" minOccurs="0"
-					maxOccurs="unbounded" />
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
-	
-	<xsd:element name="NotificationTemplatesInputModel">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element name="emailSubject" type="xsd:string" />
-				<xsd:element name="emailBody" type="xsd:string" />
-				<xsd:element name="textMessage" type="xsd:string" />
-				<xsd:element name="textSMS" type="xsd:string" />
-
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
 </xsd:schema>
 

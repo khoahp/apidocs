@@ -61,7 +61,7 @@ public interface Holidays {
 			@ApiResponse(code = HttpURLConnection.HTTP_UNAUTHORIZED, message = "Unauthorized"),
 			@ApiResponse(code = HttpURLConnection.HTTP_NOT_FOUND, message = "Not found"),
 			@ApiResponse(code = HttpURLConnection.HTTP_INTERNAL_ERROR, message = "Internal server problems") })
-	public Response updatHolidays(@Context HttpServletRequest request, @Context Header header,
+	public Response updateHolidays(@Context HttpServletRequest request, @Context Header header,
 			@ApiParam(value = "day that need to be updated", required = true) @PathParam("day") String day,
 			@ApiParam HolidaysInputModel input);
 

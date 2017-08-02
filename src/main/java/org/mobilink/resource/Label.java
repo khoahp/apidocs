@@ -17,14 +17,10 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.apache.cxf.headers.Header;
-import org.mobilink.dictcollection.model.DictCollectionModel;
 import org.mobilink.exception.model.ExceptionModel;
 import org.mobilink.label.model.LabelInputModel;
 import org.mobilink.label.model.LabelModel;
 import org.mobilink.label.model.LabelResults;
-import org.mobilink.notificationtemplate.model.NotificationTemplatesInputModel;
-import org.mobilink.notificationtemplate.model.NotificationTemplatesModel;
-import org.mobilink.notificationtemplate.model.NotificationTemplatesResults;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -79,7 +75,7 @@ public interface Label {
 			@ApiResponse(code = HttpURLConnection.HTTP_UNAUTHORIZED, message = "Unauthorized"),
 			@ApiResponse(code = HttpURLConnection.HTTP_NOT_FOUND, message = "Not found"),
 			@ApiResponse(code = HttpURLConnection.HTTP_INTERNAL_ERROR, message = "Internal server problems") })
-	public Response updatLabel(@Context HttpServletRequest request, @Context Header header,
+	public Response updateLabel(@Context HttpServletRequest request, @Context Header header,
 			@ApiParam(value = "Id that need to be updated", required = true) @PathParam("id") String id,
 			@ApiParam LabelInputModel input);
 

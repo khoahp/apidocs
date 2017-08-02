@@ -75,7 +75,7 @@ public interface Location {
 			@ApiResponse(code = HttpURLConnection.HTTP_UNAUTHORIZED, message = "Unauthorized"),
 			@ApiResponse(code = HttpURLConnection.HTTP_NOT_FOUND, message = "Not found"),
 			@ApiResponse(code = HttpURLConnection.HTTP_INTERNAL_ERROR, message = "Internal server problems") })
-	public Response updatLocation(@Context HttpServletRequest request, @Context Header header,
+	public Response updateLocation(@Context HttpServletRequest request, @Context Header header,
 			@ApiParam(value = "Id that need to be updated", required = true) @PathParam("id") String id,
 			@ApiParam LocationInputModel input);
 
