@@ -11,6 +11,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -41,7 +42,9 @@ public interface DataManagement {
 	        @ApiResponse(code = HttpURLConnection.HTTP_NOT_FOUND, message = "Not found", response = ExceptionModel.class),
 	        @ApiResponse(code = HttpURLConnection.HTTP_FORBIDDEN, message = "Access denied", response = ExceptionModel.class)
 	})
-	public Response getDictCollection(@Context HttpServletRequest request, @Context Header header);
+	public Response getDictCollection(@Context HttpServletRequest request, @Context Header header, 
+			@ApiParam(value = "number of page", required = false) @QueryParam("page") String page, 
+			@ApiParam(value = "size of page", required = false) @QueryParam("pageSize") String pageSize);
 	
 	@GET
 	@Path("/{code}")
