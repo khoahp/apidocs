@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://benchresources.in/cdm/Player" xmlns:tns="http://benchresources.in/cdm/Player"
+	elementFormDefault="qualified">
+
+	<!-- HolidaysModel -->
+	<xsd:element name="HolidaysShortModel">
+		<xsd:complexType>
+			<xsd:sequence>
+				<!-- Other fields -->
+				<xsd:element name="description" type="xsd:string" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<!-- Object to contain list of Dossier referencing Dossier model -->
+	<xsd:element name="HolidaysModel">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="holidayDate" type="xsd:date" />
+				<xsd:element name="description" type="xsd:string" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<!-- Object to contain list of Dossier referencing Dossier model -->
+	<xsd:element name="HolidaysResults">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="total" type="xsd:int" />
+				<xsd:element ref="tns:HolidaysModel"
+	minOccurs="0" maxOccurs="unbounded" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="HolidaysInputModel">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="description" type="xsd:string" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+</xsd:schema>
+
