@@ -13,10 +13,10 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import org.apache.cxf.headers.Header;
 import org.mobilink.docfile.model.AttachsResults;
 import org.mobilink.docfile.model.ChangeLogResults;
 import org.mobilink.docfile.model.DocFileDetailModel;
@@ -57,7 +57,7 @@ public interface DocFile {
 			@ApiResponse(code = HttpURLConnection.HTTP_UNAUTHORIZED, message = "Unauthorized", response = ExceptionModel.class),
 			@ApiResponse(code = HttpURLConnection.HTTP_NOT_FOUND, message = "Not found", response = ExceptionModel.class),
 			@ApiResponse(code = HttpURLConnection.HTTP_FORBIDDEN, message = "Access denied", response = ExceptionModel.class) })
-	public Response getDocFiles(@Context HttpServletRequest request, @Context Header header,
+	public Response getDocFiles(@Context HttpServletRequest request, @Context HttpHeaders header,
 			@ApiParam(value = "template", required = false) @QueryParam("template ") String template,
 			@ApiParam(value = "register", required = false) @QueryParam("register") String register,
 			@ApiParam(value = "issuer", required = false) @QueryParam("issuer") String issuer,
@@ -82,14 +82,14 @@ public interface DocFile {
 			@ApiResponse(code = HttpURLConnection.HTTP_UNAUTHORIZED, message = "Unauthorized"),
 			@ApiResponse(code = HttpURLConnection.HTTP_NOT_FOUND, message = "Not found"),
 			@ApiResponse(code = HttpURLConnection.HTTP_INTERNAL_ERROR, message = "Internal server problems") })
-	public Response addDocFile(@Context HttpServletRequest request, @Context Header header, String body);
+	public Response addDocFile(@Context HttpServletRequest request, @Context HttpHeaders header, String body);
 	
 	@GET
 	@Path("/{id}")
 	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	@ApiOperation(value = "Get a DocFileDetailModel detail by its id", response = DocFileDetailModel.class)
-	public Response getDocFiles(@Context HttpServletRequest request, @Context Header header,
+	public Response getDocFiles(@Context HttpServletRequest request, @Context HttpHeaders header,
 			@ApiParam(value = "Id that need to be get detail", required = true) @PathParam("id") String id);
 	
 	@DELETE
@@ -102,7 +102,7 @@ public interface DocFile {
 			@ApiResponse(code = HttpURLConnection.HTTP_UNAUTHORIZED, message = "Unauthorized"),
 			@ApiResponse(code = HttpURLConnection.HTTP_NOT_FOUND, message = "Not found"),
 			@ApiResponse(code = HttpURLConnection.HTTP_INTERNAL_ERROR, message = "Internal server problems") })
-	public Response deleteDocFile(@Context HttpServletRequest request, @Context Header header,
+	public Response deleteDocFile(@Context HttpServletRequest request, @Context HttpHeaders header,
 			@ApiParam(value = "Id that need to be deleted", required = true) @PathParam("id") String id);
 //Label
 	@GET
@@ -115,7 +115,7 @@ public interface DocFile {
 			@ApiResponse(code = HttpURLConnection.HTTP_UNAUTHORIZED, message = "Unauthorized", response = ExceptionModel.class),
 			@ApiResponse(code = HttpURLConnection.HTTP_NOT_FOUND, message = "Not found", response = ExceptionModel.class),
 			@ApiResponse(code = HttpURLConnection.HTTP_FORBIDDEN, message = "Access denied", response = ExceptionModel.class) })
-	public Response getLabels(@Context HttpServletRequest request, @Context Header header,
+	public Response getLabels(@Context HttpServletRequest request, @Context HttpHeaders header,
 			@ApiParam(value = "number of page", required = false) @QueryParam("page") String page,
 			@ApiParam(value = "size of page", required = false) @QueryParam("pageSize") String pageSize);
 	
@@ -129,7 +129,7 @@ public interface DocFile {
 			@ApiResponse(code = HttpURLConnection.HTTP_UNAUTHORIZED, message = "Unauthorized"),
 			@ApiResponse(code = HttpURLConnection.HTTP_NOT_FOUND, message = "Not found"),
 			@ApiResponse(code = HttpURLConnection.HTTP_INTERNAL_ERROR, message = "Internal server problems") })
-	public Response addLabel(@Context HttpServletRequest request, @Context Header header, String body);
+	public Response addLabel(@Context HttpServletRequest request, @Context HttpHeaders header, String body);
 
 	@DELETE
 	@Path("/{id}/labels/{labelId}")
@@ -141,7 +141,7 @@ public interface DocFile {
 			@ApiResponse(code = HttpURLConnection.HTTP_UNAUTHORIZED, message = "Unauthorized"),
 			@ApiResponse(code = HttpURLConnection.HTTP_NOT_FOUND, message = "Not found"),
 			@ApiResponse(code = HttpURLConnection.HTTP_INTERNAL_ERROR, message = "Internal server problems") })
-	public Response deleteLabel(@Context HttpServletRequest request, @Context Header header,
+	public Response deleteLabel(@Context HttpServletRequest request, @Context HttpHeaders header,
 			@ApiParam(value = "labelId that need to be deleted", required = true) @PathParam("labelId") String labelId);
 //Roles
 	@GET
@@ -154,7 +154,7 @@ public interface DocFile {
 			@ApiResponse(code = HttpURLConnection.HTTP_UNAUTHORIZED, message = "Unauthorized", response = ExceptionModel.class),
 			@ApiResponse(code = HttpURLConnection.HTTP_NOT_FOUND, message = "Not found", response = ExceptionModel.class),
 			@ApiResponse(code = HttpURLConnection.HTTP_FORBIDDEN, message = "Access denied", response = ExceptionModel.class) })
-	public Response getRoles(@Context HttpServletRequest request, @Context Header header,
+	public Response getRoles(@Context HttpServletRequest request, @Context HttpHeaders header,
 			@ApiParam(value = "number of page", required = false) @QueryParam("page") String page,
 			@ApiParam(value = "size of page", required = false) @QueryParam("pageSize") String pageSize);	
 	
@@ -168,7 +168,7 @@ public interface DocFile {
 			@ApiResponse(code = HttpURLConnection.HTTP_UNAUTHORIZED, message = "Unauthorized"),
 			@ApiResponse(code = HttpURLConnection.HTTP_NOT_FOUND, message = "Not found"),
 			@ApiResponse(code = HttpURLConnection.HTTP_INTERNAL_ERROR, message = "Internal server problems") })
-	public Response addRoles(@Context HttpServletRequest request, @Context Header header, String body);
+	public Response addRoles(@Context HttpServletRequest request, @Context HttpHeaders header, String body);
 	
 	@PUT
 	@Path("/{id}/roles/{roleId}")
@@ -180,7 +180,7 @@ public interface DocFile {
 			@ApiResponse(code = HttpURLConnection.HTTP_UNAUTHORIZED, message = "Unauthorized"),
 			@ApiResponse(code = HttpURLConnection.HTTP_NOT_FOUND, message = "Not found"),
 			@ApiResponse(code = HttpURLConnection.HTTP_INTERNAL_ERROR, message = "Internal server problems") })
-	public Response updateRoles(@Context HttpServletRequest request, @Context Header header,
+	public Response updateRoles(@Context HttpServletRequest request, @Context HttpHeaders header,
 			@ApiParam(value = "roleId that need to be updated", required = true) @PathParam("roleId") String roleId,
 			@ApiParam RolesInputModel input);
 	
@@ -194,7 +194,7 @@ public interface DocFile {
 			@ApiResponse(code = HttpURLConnection.HTTP_UNAUTHORIZED, message = "Unauthorized"),
 			@ApiResponse(code = HttpURLConnection.HTTP_NOT_FOUND, message = "Not found"),
 			@ApiResponse(code = HttpURLConnection.HTTP_INTERNAL_ERROR, message = "Internal server problems") })
-	public Response deleteRole(@Context HttpServletRequest request, @Context Header header,
+	public Response deleteRole(@Context HttpServletRequest request, @Context HttpHeaders header,
 			@ApiParam(value = "roleId that need to be deleted", required = true) @PathParam("roleId") String roleId);
 
 //Users
@@ -208,7 +208,7 @@ public interface DocFile {
 			@ApiResponse(code = HttpURLConnection.HTTP_UNAUTHORIZED, message = "Unauthorized", response = ExceptionModel.class),
 			@ApiResponse(code = HttpURLConnection.HTTP_NOT_FOUND, message = "Not found", response = ExceptionModel.class),
 			@ApiResponse(code = HttpURLConnection.HTTP_FORBIDDEN, message = "Access denied", response = ExceptionModel.class) })
-	public Response getUsers(@Context HttpServletRequest request, @Context Header header,
+	public Response getUsers(@Context HttpServletRequest request, @Context HttpHeaders header,
 			@ApiParam(value = "number of page", required = false) @QueryParam("page") String page,
 			@ApiParam(value = "size of page", required = false) @QueryParam("pageSize") String pageSize);	
 	
@@ -222,7 +222,7 @@ public interface DocFile {
 			@ApiResponse(code = HttpURLConnection.HTTP_UNAUTHORIZED, message = "Unauthorized"),
 			@ApiResponse(code = HttpURLConnection.HTTP_NOT_FOUND, message = "Not found"),
 			@ApiResponse(code = HttpURLConnection.HTTP_INTERNAL_ERROR, message = "Internal server problems") })
-	public Response addUsers(@Context HttpServletRequest request, @Context Header header, String body);
+	public Response addUsers(@Context HttpServletRequest request, @Context HttpHeaders header, String body);
 	
 	@PUT
 	@Path("/{id}/users/{userId}")
@@ -234,7 +234,7 @@ public interface DocFile {
 			@ApiResponse(code = HttpURLConnection.HTTP_UNAUTHORIZED, message = "Unauthorized"),
 			@ApiResponse(code = HttpURLConnection.HTTP_NOT_FOUND, message = "Not found"),
 			@ApiResponse(code = HttpURLConnection.HTTP_INTERNAL_ERROR, message = "Internal server problems") })
-	public Response updateUsers(@Context HttpServletRequest request, @Context Header header,
+	public Response updateUsers(@Context HttpServletRequest request, @Context HttpHeaders header,
 			@ApiParam(value = "userId that need to be updated", required = true) @PathParam("userId") String userId,
 			@ApiParam UserDocFileInputModel input);
 	
@@ -248,7 +248,7 @@ public interface DocFile {
 			@ApiResponse(code = HttpURLConnection.HTTP_UNAUTHORIZED, message = "Unauthorized"),
 			@ApiResponse(code = HttpURLConnection.HTTP_NOT_FOUND, message = "Not found"),
 			@ApiResponse(code = HttpURLConnection.HTTP_INTERNAL_ERROR, message = "Internal server problems") })
-	public Response deleteUser(@Context HttpServletRequest request, @Context Header header,
+	public Response deleteUser(@Context HttpServletRequest request, @Context HttpHeaders header,
 			@ApiParam(value = "userId that need to be deleted", required = true) @PathParam("userId") String userId);
 
 //Links	
@@ -262,7 +262,7 @@ public interface DocFile {
 			@ApiResponse(code = HttpURLConnection.HTTP_UNAUTHORIZED, message = "Unauthorized", response = ExceptionModel.class),
 			@ApiResponse(code = HttpURLConnection.HTTP_NOT_FOUND, message = "Not found", response = ExceptionModel.class),
 			@ApiResponse(code = HttpURLConnection.HTTP_FORBIDDEN, message = "Access denied", response = ExceptionModel.class) })
-	public Response getLinks(@Context HttpServletRequest request, @Context Header header,
+	public Response getLinks(@Context HttpServletRequest request, @Context HttpHeaders header,
 			@ApiParam(value = "number of page", required = false) @QueryParam("page") String page,
 			@ApiParam(value = "size of page", required = false) @QueryParam("pageSize") String pageSize);	
 	
@@ -276,7 +276,7 @@ public interface DocFile {
 			@ApiResponse(code = HttpURLConnection.HTTP_UNAUTHORIZED, message = "Unauthorized"),
 			@ApiResponse(code = HttpURLConnection.HTTP_NOT_FOUND, message = "Not found"),
 			@ApiResponse(code = HttpURLConnection.HTTP_INTERNAL_ERROR, message = "Internal server problems") })
-	public Response addLinks(@Context HttpServletRequest request, @Context Header header, String body);
+	public Response addLinks(@Context HttpServletRequest request, @Context HttpHeaders header, String body);
 	
 	@DELETE
 	@Path("/{id}/links/{docFileId}")
@@ -288,7 +288,7 @@ public interface DocFile {
 			@ApiResponse(code = HttpURLConnection.HTTP_UNAUTHORIZED, message = "Unauthorized"),
 			@ApiResponse(code = HttpURLConnection.HTTP_NOT_FOUND, message = "Not found"),
 			@ApiResponse(code = HttpURLConnection.HTTP_INTERNAL_ERROR, message = "Internal server problems") })
-	public Response deleteLink(@Context HttpServletRequest request, @Context Header header,
+	public Response deleteLink(@Context HttpServletRequest request, @Context HttpHeaders header,
 			@ApiParam(value = "docFileId that need to be deleted", required = true) @PathParam("docFileId") String docFileId);
 
 //Attach
@@ -302,7 +302,7 @@ public interface DocFile {
 			@ApiResponse(code = HttpURLConnection.HTTP_UNAUTHORIZED, message = "Unauthorized", response = ExceptionModel.class),
 			@ApiResponse(code = HttpURLConnection.HTTP_NOT_FOUND, message = "Not found", response = ExceptionModel.class),
 			@ApiResponse(code = HttpURLConnection.HTTP_FORBIDDEN, message = "Access denied", response = ExceptionModel.class) })
-	public Response getAttachs(@Context HttpServletRequest request, @Context Header header,
+	public Response getAttachs(@Context HttpServletRequest request, @Context HttpHeaders header,
 			@ApiParam(value = "number of page", required = false) @QueryParam("page") String page,
 			@ApiParam(value = "size of page", required = false) @QueryParam("pageSize") String pageSize);	
 	
@@ -317,7 +317,7 @@ public interface DocFile {
 			@ApiResponse(code = HttpURLConnection.HTTP_UNAUTHORIZED, message = "Unauthorized", response = ExceptionModel.class),
 			@ApiResponse(code = HttpURLConnection.HTTP_NOT_FOUND, message = "Not found", response = ExceptionModel.class),
 			@ApiResponse(code = HttpURLConnection.HTTP_FORBIDDEN, message = "Access denied", response = ExceptionModel.class) })
-	public Response getChangelogs(@Context HttpServletRequest request, @Context Header header,
+	public Response getChangelogs(@Context HttpServletRequest request, @Context HttpHeaders header,
 			@ApiParam(value = "number of page", required = false) @QueryParam("page") String page,
 			@ApiParam(value = "size of page", required = false) @QueryParam("pageSize") String pageSize);	
 	

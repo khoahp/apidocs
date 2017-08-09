@@ -10,10 +10,10 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import org.apache.cxf.headers.Header;
 import org.mobilink.exception.model.ExceptionModel;
 import org.mobilink.notificationtemplate.model.NotificationTemplatesInputModel;
 import org.mobilink.notificationtemplate.model.NotificationTemplatesModel;
@@ -38,7 +38,7 @@ public interface NotificationTemplate {
 	        @ApiResponse(code = HttpURLConnection.HTTP_NOT_FOUND, message = "Not found", response = ExceptionModel.class),
 	        @ApiResponse(code = HttpURLConnection.HTTP_FORBIDDEN, message = "Access denied", response = ExceptionModel.class)
 	})
-	public Response getNotificationTemplate(@Context HttpServletRequest request, @Context Header header);
+	public Response getNotificationTemplate(@Context HttpServletRequest request, @Context HttpHeaders header);
 	
 	/**
 	 * @param request
@@ -51,7 +51,7 @@ public interface NotificationTemplate {
 	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	@ApiOperation(value = "Get a NotificationTemplatesResults detail by its code", response = NotificationTemplatesModel.class)
-	public Response getNotificationTemplate(@Context HttpServletRequest request, @Context Header header,
+	public Response getNotificationTemplate(@Context HttpServletRequest request, @Context HttpHeaders header,
 			@ApiParam(value = "type that need to be get detail", required = true) @PathParam("type") String type);
 	
 	/**
@@ -72,27 +72,7 @@ public interface NotificationTemplate {
 	        @ApiResponse(code = HttpURLConnection.HTTP_NOT_FOUND, message = "Not found"),
 	        @ApiResponse(code = HttpURLConnection.HTTP_INTERNAL_ERROR, message = "Internal server problems")
 	})
-	public Response updateNotificationTemplates(@Context HttpServletRequest request, @Context Header header,
+	public Response updateNotificationTemplates(@Context HttpServletRequest request, @Context HttpHeaders header,
 			@ApiParam(value = "type that need to be updated", required = true) @PathParam("type") String type, @ApiParam NotificationTemplatesInputModel input);
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

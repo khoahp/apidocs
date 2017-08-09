@@ -13,10 +13,10 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import org.apache.cxf.headers.Header;
 import org.mobilink.exception.model.ExceptionModel;
 import org.mobilink.label.model.LabelInputModel;
 import org.mobilink.label.model.LabelModel;
@@ -40,7 +40,7 @@ public interface Label {
 			@ApiResponse(code = HttpURLConnection.HTTP_UNAUTHORIZED, message = "Unauthorized", response = ExceptionModel.class),
 			@ApiResponse(code = HttpURLConnection.HTTP_NOT_FOUND, message = "Not found", response = ExceptionModel.class),
 			@ApiResponse(code = HttpURLConnection.HTTP_FORBIDDEN, message = "Access denied", response = ExceptionModel.class) })
-	public Response getLabels(@Context HttpServletRequest request, @Context Header header,
+	public Response getLabels(@Context HttpServletRequest request, @Context HttpHeaders header,
 			@ApiParam(value = "number of page", required = false) @QueryParam("page") String page,
 			@ApiParam(value = "size of page", required = false) @QueryParam("pageSize") String pageSize);
 
@@ -55,7 +55,7 @@ public interface Label {
 	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	@ApiOperation(value = "Get a LabelResults detail by its id", response = LabelModel.class)
-	public Response getLabel(@Context HttpServletRequest request, @Context Header header,
+	public Response getLabel(@Context HttpServletRequest request, @Context HttpHeaders header,
 			@ApiParam(value = "Id that need to be get detail", required = true) @PathParam("id") String id);
 
 	/**
@@ -75,7 +75,7 @@ public interface Label {
 			@ApiResponse(code = HttpURLConnection.HTTP_UNAUTHORIZED, message = "Unauthorized"),
 			@ApiResponse(code = HttpURLConnection.HTTP_NOT_FOUND, message = "Not found"),
 			@ApiResponse(code = HttpURLConnection.HTTP_INTERNAL_ERROR, message = "Internal server problems") })
-	public Response updateLabel(@Context HttpServletRequest request, @Context Header header,
+	public Response updateLabel(@Context HttpServletRequest request, @Context HttpHeaders header,
 			@ApiParam(value = "Id that need to be updated", required = true) @PathParam("id") String id,
 			@ApiParam LabelInputModel input);
 
@@ -88,7 +88,7 @@ public interface Label {
 			@ApiResponse(code = HttpURLConnection.HTTP_UNAUTHORIZED, message = "Unauthorized"),
 			@ApiResponse(code = HttpURLConnection.HTTP_NOT_FOUND, message = "Not found"),
 			@ApiResponse(code = HttpURLConnection.HTTP_INTERNAL_ERROR, message = "Internal server problems") })
-	public Response addLabel(@Context HttpServletRequest request, @Context Header header, String body);
+	public Response addLabel(@Context HttpServletRequest request, @Context HttpHeaders header, String body);
 
 	@DELETE
 	@Path("/{id}")
@@ -100,7 +100,7 @@ public interface Label {
 			@ApiResponse(code = HttpURLConnection.HTTP_UNAUTHORIZED, message = "Unauthorized"),
 			@ApiResponse(code = HttpURLConnection.HTTP_NOT_FOUND, message = "Not found"),
 			@ApiResponse(code = HttpURLConnection.HTTP_INTERNAL_ERROR, message = "Internal server problems") })
-	public Response deleteLabel(@Context HttpServletRequest request, @Context Header header,
+	public Response deleteLabel(@Context HttpServletRequest request, @Context HttpHeaders header,
 			@ApiParam(value = "Id that need to be deleted", required = true) @PathParam("id") String id);
 
 }
