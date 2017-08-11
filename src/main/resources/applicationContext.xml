@@ -39,7 +39,7 @@
 
   <!-- this scans the classes for resources -->
   <bean id="swaggerConfig" class="io.swagger.jaxrs.config.BeanConfig">
-    <property name="resourcePackage" value="io.swagger.sample.resource,org.mobilink.resource"/>
+    <property name="resourcePackage" value="org.mobilink.resource"/>
     <property name="version" value="2.0.0"/>
     <property name="host" value="localhost:8080"/>
     <property name="basePath" value="/o/rest"/>

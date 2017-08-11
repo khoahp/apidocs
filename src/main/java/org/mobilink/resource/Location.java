@@ -28,8 +28,8 @@ import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
-@Path("/Locations")
-@Api(value = "/Locations", description = "APIs for Locations", tags = "Location")
+@Path("/locations")
+@Api(value = "/locations", description = "APIs for Locations", tags = "location")
 public interface Location {
 	@GET
 	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })

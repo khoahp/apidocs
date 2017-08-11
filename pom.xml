@@ -23,6 +23,13 @@
 	</build>
 	
   <dependencies>
+  
+<!--   Liferay -->
+    <dependency>
+      <groupId>com.liferay.portal</groupId>
+      <artifactId>com.liferay.portal.kernel</artifactId>
+      <version>2.6.0</version>
+    </dependency>
 
     <!-- Spring -->
     <dependency>
