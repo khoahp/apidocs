@@ -39,13 +39,13 @@
 
   <!-- this scans the classes for resources -->
   <bean id="swaggerConfig" class="io.swagger.jaxrs.config.BeanConfig">
-    <property name="resourcePackage" value="io.swagger.sample.resource,org.mobilink.resource"/>
+    <property name="resourcePackage" value="org.opencps.api.controller"/>
     <property name="version" value="2.0.0"/>
     <property name="host" value="localhost:8080"/>
     <property name="basePath" value="/o/rest"/>
-    <property name="title" value="Mobilink APIs and datamodels"/>
+    <property name="title" value="OpenCPS APIs and datamodels"/>
     <property name="description" value="This is a app for management activities of organization"/>
-    <property name="contact" value="mobilinkteam@fds.vn"/>
+    <property name="contact" value="khoavd@fds.vn"/>
     <property name="license" value="powered by FDS"/>
     <property name="licenseUrl" value="http://fds.vn"/>
     <!-- <property name="filterClass" value="ApiAuthorizationFilterImpl"/> -->
